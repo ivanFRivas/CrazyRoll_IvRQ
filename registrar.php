@@ -22,7 +22,7 @@ try {
     exit();
 }
 
-// Leer datos JSON del cuerpo de la solicitud
+// Leer datos POST tradicionales
 $data = $_POST;
 
 // Validar campos necesarios
@@ -38,7 +38,6 @@ foreach ($campos as $campo) {
 try {
     $stmt = $pdo->prepare("INSERT INTO tbl_clientes (nombre, apellido_paterno, apellido_materno, sexo, edad, celular, email, zona, m_pago, contrasenia)
                            VALUES (:nombre, :apellido_paterno, :apellido_materno, :sexo, :edad, :celular, :email, :zona, :m_pago, :contrasenia)");
-
     $stmt->execute([
         ':nombre' => $data['nombre'],
         ':apellido_paterno' => $data['apellido_paterno'],
@@ -49,9 +48,9 @@ try {
         ':email' => $data['email'],
         ':zona' => $data['zona'],
         ':m_pago' => $data['m_pago'],
-        ':contrasenia' => password_hash($data['contrasenia'], PASSWORD_DEFAULT),
+        ':contrasenia' => $data['contrasenia'], // Sin encriptar para simplicidad académica
     ]);
-
+    
     echo json_encode(["success" => true, "message" => "Usuario registrado correctamente"]);
 } catch (PDOException $e) {
     echo json_encode(["success" => false, "message" => "Error al registrar: " . $e->getMessage()]);
