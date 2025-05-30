@@ -23,7 +23,7 @@ try {
 }
 
 // Leer datos JSON del cuerpo de la solicitud
-$data = json_decode(file_get_contents("php://input"), true);
+$data = $_POST;
 
 // Validar campos necesarios
 $campos = ['nombre', 'apellido_paterno', 'apellido_materno', 'sexo', 'edad', 'celular', 'email', 'zona', 'm_pago', 'contrasenia'];
