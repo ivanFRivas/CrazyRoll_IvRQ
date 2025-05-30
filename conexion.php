@@ -1,9 +1,9 @@
 <?php
-$host = getenv("DB_HOST");
-$dbname = getenv("DB_NAME");
+$host = getenv("db_sushi");
+$dbname = getenv("db_sushi_user");
 $user = getenv("DB_USER");
-$password = getenv("DB_PASSWORD");
-$port = getenv("DB_PORT");
+$password = getenv("a4G0j0rX5o1IWc2pmPqk59Khr9XdBUYW");
+$port = getenv("5432");
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
