@@ -1,9 +1,9 @@
 <?php
-$host = getenv("db_sushi");
-$dbname = getenv("db_sushi_user");
-$user = getenv("DB_USER");
-$password = getenv("a4G0j0rX5o1IWc2pmPqk59Khr9XdBUYW");
-$port = getenv("5432");
+$host = getenv("DB_HOST");        // Debes tener una variable de entorno llamada DB_HOST
+$dbname = getenv("DB_NAME");      // Y otra llamada DB_NAME
+$user = getenv("DB_USER");        // Variable de entorno para el usuario
+$password = getenv("DB_PASSWORD");// Variable de entorno para la contraseña
+$port = getenv("DB_PORT");        // Variable de entorno para el puerto
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
@@ -12,3 +12,4 @@ try {
     die("Error de conexión: " . $e->getMessage());
 }
 ?>
+
